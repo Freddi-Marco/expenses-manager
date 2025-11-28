@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { DBfetchItems, DBpushItem } from "./components/DBManager.jsx";
 import ExpenseForm from "./components/Form";
 import ExpenseList from "./components/ItemList";
-import ExpenseItem from "./components/Item";
 import ExpenseTitle from "./components/ExpenseTitle";
 import "./App.css";
 
