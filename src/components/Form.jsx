@@ -9,6 +9,8 @@ const ExpenseForm = ({ onAdd }) => {
 
   const handleAdd = () => {
     if (name && price && date) {
+      casted_price = Number(price);
+      casted_name = toString(name)
       onAdd({
         name,
         price,
