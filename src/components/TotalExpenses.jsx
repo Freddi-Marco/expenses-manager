@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const TotalExpenses = ({ items }) => {
-  const [total, setTotal] = React.useState(0);
-  useEffect(() => {
-    let sum = 0
-    items.map((item) => {
-      sum += item.price
-    })
-    setTotal(sum)
-  }, [items]);
-  return(
-  <>
-    <h1 className="heading text-3xl mb-6 text-center">
-      Total Expenses: <span className="text-blue-600 font-bold">€ {total}</span>
-    </h1>
-  </>
+  const total = items.reduce((sum, item) => sum + Number(item.price), 0);
+  return (
+    <div className="w-full text-center py-2 mb-2 font-inter text-lg font-semibold tracking-widest text-black border-b border-black uppercase bg-white">
+      Totale: <span className="font-bold">€{total.toFixed(2)}</span>
+    </div>
   );
 };
 

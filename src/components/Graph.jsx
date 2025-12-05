@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
+import { FiBarChart2 } from 'react-icons/fi';
 
 const Graph = ({ items }) => {
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
@@ -14,20 +15,41 @@ const Graph = ({ items }) => {
       labels,
       datasets: [
         {
-          label: 'Expense',
+          label: 'Spese',
           data,
-          backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 2
+          backgroundColor: '#000',
+          borderColor: '#000',
+          borderWidth: 2,
+          hoverBackgroundColor: '#222',
         }
       ]
     });
   }, [items]);
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Expense Overview</h2>
-      <Chart type="bar" data={chartData} />
+    <div className="text-center">
+      <div className="flex items-center justify-center mb-2 gap-2">
+        <FiBarChart2 className="text-black text-2xl" />
+        <h2 className="text-2xl font-extrabold text-black tracking-tight font-inter uppercase">Panoramica Spese</h2>
+      </div>
+      <Chart type="bar" data={chartData} options={{
+        plugins: {
+          legend: {
+            labels: {
+              font: { family: 'Inter', size: 16, weight: 'bold' },
+              color: '#000',
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { font: { family: 'Inter', size: 14 }, color: '#000' }
+          },
+          y: {
+            ticks: { font: { family: 'Inter', size: 14 }, color: '#000' }
+          }
+        }
+      }} />
     </div>
   );
 };
