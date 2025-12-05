@@ -4,11 +4,11 @@ import TotalExpenses from "./components/TotalExpenses";
 import ExpenseForm from "./components/Form";
 import ExpenseList from "./components/ItemList";
 import ExpenseTitle from "./components/ExpenseTitle";
+import Graph from "./components/Graph.jsx";
 import "./App.css";
 
 const App = () => {
   const [items, setItems] = useState([]);
-  const [totale, setTotale] = useState(0);
 
   const handleAdd = (item) => {
     setItems([...items, item]);
@@ -29,25 +29,26 @@ const App = () => {
     getItems();
   }, [items]);
 
-  React.useEffect(() => {
-    let sum = 0
-    items.map((item) => {
-      sum += item.price
-    })
-    setTotale(sum)
-  }, [items]);
-
   return (
-    <>
-      <ExpenseTitle />
-      <TotalExpenses total={totale} />
-      <div className="w-full flex justify-center max-w-10xl">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          <ExpenseForm onAdd={handleAdd} />
-          <ExpenseList items={items} onDelete={handleDelete} />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 py-10">
+      <div className="max-w-5xl mx-auto px-4">
+        <ExpenseTitle />
+        <TotalExpenses items={items} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8" style={{ minHeight: '500px' }}>
+          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-between h-[500px]">
+            <ExpenseForm onAdd={handleAdd} />
+          </div>
+          <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-between h-[500px]">
+            <div className="flex-1 overflow-y-auto">
+              <ExpenseList items={items} onDelete={handleDelete} />
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 bg-white rounded-xl shadow-lg p-8">
+          <Graph items={items} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

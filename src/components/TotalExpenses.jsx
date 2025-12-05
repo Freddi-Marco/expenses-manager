@@ -1,4 +1,14 @@
-const TotalExpenses = ({ total }) => {
+import React, { useEffect, useState } from "react";
+
+const TotalExpenses = ({ items }) => {
+  const [total, setTotal] = React.useState(0);
+  useEffect(() => {
+    let sum = 0
+    items.map((item) => {
+      sum += item.price
+    })
+    setTotal(sum)
+  }, [items]);
   return(
   <>
     <h1 className="heading text-3xl mb-6 text-center">

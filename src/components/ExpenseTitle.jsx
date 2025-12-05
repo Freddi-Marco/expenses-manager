@@ -1,3 +1,5 @@
+import React from "react";
+
 const ExpenseTitle = () => {
   return (
     <h1 className="text-4xl font-bold text-center text-blue-600 my-5">
