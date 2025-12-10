@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
-import { FiBarChart2 } from 'react-icons/fi';
+import { FiBarChart2, FiPieChart } from 'react-icons/fi';
 
 const Graph = ({ items }) => {
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
+  const [pieData, setPieData] = useState({ labels: [], datasets: [] });
 
   useEffect(() => {
     const safeItems = Array.isArray(items) ? items : [];
@@ -21,6 +22,21 @@ const Graph = ({ items }) => {
           borderColor: '#000',
           borderWidth: 2,
           hoverBackgroundColor: '#222',
+        }
+      ]
+    });
+
+    setPieData({
+      labels,
+      datasets: [
+        {
+          label: 'Spese',
+          data,
+          backgroundColor: [
+            '#000', '#222', '#444', '#666', '#888', '#aaa', '#ccc', '#eee'
+          ],
+          borderColor: '#fff',
+          borderWidth: 2,
         }
       ]
     });
@@ -47,6 +63,20 @@ const Graph = ({ items }) => {
           },
           y: {
             ticks: { font: { family: 'Inter', size: 14 }, color: '#000' }
+          }
+        }
+      }} />
+      <div className="flex items-center justify-center mt-8 mb-2 gap-2">
+        <FiPieChart className="text-black text-2xl" />
+        <h2 className="text-xl font-extrabold text-black tracking-tight font-inter uppercase">Distribuzione Spese</h2>
+      </div>
+      <Chart type="pie" data={pieData} options={{
+        plugins: {
+          legend: {
+            labels: {
+              font: { family: 'Inter', size: 14, weight: 'bold' },
+              color: '#000',
+            }
           }
         }
       }} />
