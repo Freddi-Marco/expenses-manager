@@ -3,8 +3,6 @@ const DBfetchItems = async () => {
     const response = await fetch("http://127.0.0.1:8090/api/collections/spese/records");
     const data = await response.json();
 
-    console.log(data.items);
-
     const mapped = data.items.map(item => {
         const { id, name, price, date } = item;
         return { id, name, price: Number(price), date: new Date(date) };
