@@ -1,18 +1,49 @@
-# React + Vite
+# Gestore Spese
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un'applicazione web minimale per la gestione delle spese personali, sviluppata con React, Vite, TailwindCSS e PocketBase.
 
-Currently, two official plugins are available:
+## Funzionalità
+- Aggiunta di spese con nome, prezzo, data e ora
+- Visualizzazione delle spese in una lista scrollabile
+- Eliminazione delle spese
+- Calcolo del totale spese
+- Grafico delle spese aggiornato in tempo reale
+- Sincronizzazione con database PocketBase
+- Interfaccia moderna, minimale, bianco e nero
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
+- React
+- Vite
+- TailwindCSS
+- PocketBase
+- Chart.js
+- React Icons
+- Font Inter (open source)
 
-## React Compiler
+## Installazione
+1. Installa le dipendenze:
+   ```sh
+   npm install
+   npm install react-icons @fontsource/inter
+   ```
+2. Importa il font Inter nel file principale:
+   ```js
+   import "@fontsource/inter/variable.css";
+   ```
+3. Avvia il server di sviluppo:
+   ```sh
+   npm run dev
+   ```
+4. Assicurati che PocketBase sia avviato su `http://127.0.0.1:8090`.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Configurazione PocketBase
+- La collezione deve chiamarsi `spese` e contenere almeno i campi: `name`, `price`, `date`.
 
-Note: This will impact Vite dev & build performances.
+## Struttura principale
+- **Form**: per aggiungere nuove spese
+- **Lista**: mostra tutte le spese con possibilità di eliminazione
+- **Totale**: mostra il totale delle spese
+- **Grafico**: visualizza l'andamento delle spese
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Stile
+- Interfaccia ispirata a Splice, solo bianco e nero, font Inter, layout pulito e moderno
